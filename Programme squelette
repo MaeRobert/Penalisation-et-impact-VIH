@@ -1,0 +1,285 @@
+# -*- coding: UTF-8 -*-
+
+# Importation des packages nécessaires
+import numpy as np
+import random
+
+# Constantes
+RAYON_RECHERCHE_PARTENAIRE = 5
+ESSAIS_RECHERCHE_PARTENAIRE = 3
+CHANGE_PARTENAIRE_MOIS = 5
+OUBLI_POLICE_MOIS = 3
+
+# Classe pour la gestion des contaminations au VIH.
+class VIH:
+
+    # Énumération des différents statuts possibles.
+    NON_INFECTE        = 0
+    INFECTE_NON_TRAITE = 1
+    INFECTE_TRAITE     = 2
+
+    # Retourne la probabilité de s'infecter lors d'un rapport.
+    # Ce type de probabilité peut être implémenté sous forme d'une formule, d'une suite de conditions
+    # ("if"/"elif"/"else"), de tableau, etc. ou une combinaison de toutes ces possibilités.
+    @staticmethod
+    def probabilite_infection_rapport(humain):
+        return 0.2 * humain.precarite
+
+    # Retourne la probabilité de s'infecter lors d'une prise de drogue.
+    @staticmethod
+    def probabilite_infection_drogue(humain):
+        return (0.01 + 0.19 * humain.precarite) * humain.usage_drogues
+
+    # Retourne la probabilité d'obtenir un traitement.
+    @staticmethod
+    def probabilite_traitement(humain):
+        return pow(1.0 - humain.precarite, 3.0)
+
+# Classe pour la gestion de la police.
+class police:
+
+    # Retourne la probabilité de se faire contrôler par la police.
+    @staticmethod
+    def probabilite_controle(humain):
+        return (humain.usage_drogues + humain.racise + humain.precarite) / 3.0
+
+# Classe de base représentant un "humain" (individu).
+# Une ville est un tableau à 2 dimensions constitués d'humains.
+# Chaque humain est un agent indépendant dont certaines caractèristiques sont mises à jour à chaque tour.
+# Cette classe est dérivée en 2 sous-classes spécifiques : la classe "client" et la classe "prostitue".
+class humain(object):
+
+    # Crée un humain en spécifiant ses différentes caractèristiques.
+    def __init__(self, ville, statut_vih, precarite, usage_drogues, racise, transgenre, abscisse, ordonnee):
+
+        # Mémorise la ville à laquelle on appartient
+        self.ville = ville
+
+        # Statut de cet individu en ce qui concerne le VIH.
+        self.statut_vih = statut_vih
+
+        # Caractéristiques de cet individu (valeurs toutes comprises entre 0.0 et 1.0).
+        self.precarite         = precarite
+        self.usage_drogues     = usage_drogues
+        self.racise            = racise
+        self.transgenre        = transgenre
+        self.trauma_police     = 0.0 # Traumatisme subi suite à un contrôle.
+        self.change_partenaire = 0.0 # Désir de changer de partenaire.
+
+        # Coordonnées de l'individu dans la ville.
+        self.abscisse = abscisse
+        self.ordonnee = ordonnee
+
+        # Pas de partenaire au départ...
+        self.partenaire = None;
+
+    # Retourne l'état mental de cet individu, de 0.0 (le meilleur) à 1.0 (le pire).
+    def etat_mental(self):
+
+        # Ici, l'implémentation est très approximative, mais permet de montrer l'influence de ces différents
+        # facteurs sur l'état mental d'un individu. On pourra éventuellement définir des coéfficient ou autres
+        # formules par la suite.
+        return (self.precarite + self.usage_drogues + self.racise + self.transgenre + self.compteur_police) / 5.0
+
+    # Choisit un partenaire pour cet individu. Note : il est possible de rester sans partenaire...
+    def choix_partenaire(self, rayon_recherche, nombre_essais):
+
+        # Vérifie si l'individu a déjà un partenaire et qu'il ne désire pas en changer.
+        if self.partenaire is not None and self.change_partenaire < 1.0:
+
+            # Modifie le désire de changement.
+            self.change_partenaire = min (1.0, self.change_partenaire + 1.0 / CHANGE_PARTENAIRE_MOIS)
+
+        else:
+
+            # Prévient l'éventuel partenaire actuel de ce changement.
+            if self.partenaire is not None:
+                self.partenaire.partenaire = None
+            self.partenaire = None
+
+            # Cherche un partenaire à proximité.
+            xmin = max(self.abscisse - rayon_recherche, 0)
+            xmax = min(self.abscisse + rayon_recherche, self.ville.largeur - 1)
+            ymin = max(self.ordonnee - rayon_recherche, 0)
+            ymax = min(self.ordonnee + rayon_recherche, self.ville.hauteur - 1)
+
+            for essai in range(nombre_essais):
+                x = random.randint(xmin, xmax)
+                y = random.randint(ymin, ymax)
+                voisin = self.ville.humains[x][y]
+                if voisin != self and voisin.partenaire is None:
+
+                    # Un nouveau couple est formé.
+                    self.partenaire = voisin
+                    voisin.partenaire = self
+
+                    # Ré-initialise le désire de changement des 2 partenaires.
+                    self.change_partenaire = 0.0
+                    voisin.change_partenaire = 0.0
+                    break
+
+    # Met à jour le statut vis à vis du VIH après un rapport non-tarifé.
+    def infection_vih_rapport_non_tarife(self):
+
+        # Rien ne se passe si l'individu n'a pas de partenaire.
+        if self.partenaire is None:
+            return
+
+        # Un individu non-infecté peut le devenir si son partenaire est infecté et non-traité.
+        # Note : on ne s'occupe ici que de "self", le statut du partenaire sera mis à jour par lui-même.
+        if self.statut_vih == VIH.NON_INFECTE and self.partenaire.statut_vih == VIH.INFECTE_NON_TRAITE:
+            if random.random() < VIH.probabilite_infection_rapport(self):
+                self.statut_vih = VIH.INFECTE_NON_TRAITE
+
+    # Met à jour le statut vis à vis du VIH après une prise de drogue.
+    def infection_vih_drogue(self):
+        if self.statut_vih == VIH.NON_INFECTE:
+            if random.random() < VIH.probabilite_infection_drogue(self):
+                self.statut_vih = VIH.INFECTE_NON_TRAITE
+
+    # Met à jour le statut vis à vis du VIH après traitement.
+    def traitement_vih(self):
+        if self.statut_vih == VIH.INFECTE_NON_TRAITE:
+            if random.random() < VIH.probabilite_traitement(self):
+                self.statut_vih = VIH.INFECTE_TRAITE
+
+    # Met à jour le controle de la police (1.0 = l'individu vient tout juste de se faire contrôler)
+    def controle_police(self):
+
+        # Est-ce que l'individu subit un contrôle de police ?
+        if random.random() < police.probabilite_controle(self):
+
+            # Un contrôle de police est fait.
+            self.trauma_police = 1.0
+        else:
+
+            # Le traumatisme du contrôle est peu à peu oublié.
+            self.trauma_police = max (0.0, self.trauma_police - 1.0 / OUBLI_POLICE_MOIS)
+
+    # Met à jour l'individu ce tour-ci.
+    def un_tour(self):
+        self.choix_partenaire(RAYON_RECHERCHE_PARTENAIRE, ESSAIS_RECHERCHE_PARTENAIRE)
+        self.infection_vih_drogue()
+        self.infection_vih_rapport_non_tarife()
+        self.traitement_vih()
+        self.controle_police()
+
+# Classe représentant un client
+class client(humain):
+
+    # Crée le client en spécifiant ses différentes caractèristiques.
+    def __init__(self, ville, statut_vih, precarite, usage_drogues, racise, transgenre, abscisse, ordonnee):
+        super(client, self).__init__(ville, statut_vih, precarite, usage_drogues, racise, transgenre, abscisse, ordonnee)
+
+# Classe représentant un individu prostitué.
+class prostitue(humain):
+
+    # Crée l'individu prostitué en spécifiant ses différentes caractèristiques.
+    def __init__(self, ville, statut_vih, precarite, usage_drogues, racise, transgenre, abscisse, ordonnee, garde_corps):
+        super(prostitue, self).__init__(ville, statut_vih, precarite, usage_drogues, racise, transgenre, abscisse, ordonnee)
+        self.garde_corps = garde_corps
+
+# Classe représentant la ville, un tableau à 2 dimensions constitués d'humains.
+class ville:
+
+    # Retourne la precarite d'un endroit de la ville.
+    # La precarite, quoique légèrement aléatoire, dépend de la géographie de la ville (différents quartiers, etc.).
+    def precarite(self, x, y):
+
+        # Implémentation de test, avec 4 quartiers de taille identique.
+        if x < self.largeur / 2:
+            if y < self.hauteur / 2:
+                precarite_quartier = 0.0
+            else:
+                precarite_quartier = 0.25
+        else:
+            if y < self.hauteur / 2:
+                precarite_quartier = 0.5
+            else:
+                precarite_quartier = 0.75
+        return precarite_quartier + 0.25 * random.random()
+
+    # Crée la ville
+    def __init__(self, largeur, hauteur):
+
+        # Définit la taille de la ville.
+        self.largeur = largeur
+        self.hauteur = hauteur
+
+        # Remplit la ville d'habitants.
+#       self.humains = np.empty((largeur, hauteur), humain) # TODO: utiliser numpy...
+        self.humains = [[None for x in range(largeur)] for y in range(hauteur)]
+        for x in range(largeur):
+            for y in range(hauteur):
+
+                # Définit un habitant.
+                statut_vih = VIH.NON_INFECTE
+                precarite = self.precarite(x, y)
+                usage_drogues = 0.0 if random.random() < 0.9 else 1.0
+                racise = 1.0 if random.random() < precarite else 0.0
+                transgenre = 0.0 if random.random() < 0.95 else 1.0
+
+                type = random.random()
+                if type < 0.85:
+                    habitant = humain(self, statut_vih, precarite, usage_drogues, racise, transgenre, x, y)
+                elif type < 0.95:
+                    habitant = client(self, statut_vih, precarite, usage_drogues, racise, transgenre, x, y)
+                else:
+                    garde_corps = 0.0 if random.random() < 0.8 else 1.0
+                    habitant = prostitue(self, statut_vih, precarite, usage_drogues, racise, transgenre, x, y, garde_corps)
+
+                # Mémorise cet habitant.
+                self.humains[x][y] = habitant
+
+    # Met à jour la ville pour un tour.
+    def un_tour(self):
+        for x in range(self.largeur):
+            for y in range(self.hauteur):
+                self.humains[x][y].un_tour()
+
+    # Simule ce qui se passe dans la ville et sa population sur plusieurs tours.
+    def simule(self, nombre_tours):
+
+        # Lance la simulation
+        for tour in range(nombre_tours):
+            self.un_tour()
+
+        # Affiche un rapport des contaminations au VIH
+        nb_total = 0
+        nb_total_non_traites = 0
+        nb_total_traites = 0
+        nb_prostitues = 0
+        nb_prostitues_non_traites = 0
+        nb_prostitues_traites = 0
+        for x in range(self.largeur):
+            for y in range(self.hauteur):
+                humain = self.humains[x][y]
+                nb_total += 1
+                if humain.statut_vih == VIH.INFECTE_NON_TRAITE:
+                    nb_total_non_traites += 1
+                elif humain.statut_vih == VIH.INFECTE_TRAITE:
+                    nb_total_traites += 1
+
+                if type(humain) is prostitue:
+                    nb_prostitues += 1
+                    if humain.statut_vih == VIH.INFECTE_NON_TRAITE:
+                        nb_prostitues_non_traites += 1
+                    elif humain.statut_vih == VIH.INFECTE_TRAITE:
+                        nb_prostitues_traites += 1
+
+        print(
+            "Contaminations au VIH après {0} tours :\n"
+            "- Sur les {1} habitants : {2:.1f}% non-traités / {3:.1f}% traités\n"
+            "- Sur les {4} prostitués : {5:.1f}% non-traités / {6:.1f}% traités\n"
+            .format(
+                nombre_tours,
+                nb_total,
+                nb_total_non_traites * 100.0 / nb_total,
+                nb_total_traites * 100.0 / nb_total,
+                nb_prostitues,
+                nb_prostitues_non_traites * 100.0 / nb_prostitues,
+                nb_prostitues_traites * 100.0 / nb_prostitues))
+
+# Programme principal, pour test.
+ma_ville = ville(50, 50)
+ma_ville.simule(20)
