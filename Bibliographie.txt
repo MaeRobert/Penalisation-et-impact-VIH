@@ -1,0 +1,68 @@
+Il y a principalement trois types de sources qui m’ont servi dans ce TIPE.
+Le premier m’a apporté des données sociales importantes, afin de me familiariser avec le sujet,
+d’une part (en particulier à travers la lecture de tribunes et de témoignages) ; et d’autre part pour
+avoir des statistiques plus précises à introduire dans mon programme, en particulier sur la
+corrélation entre les transidentités et/ou le fait d’être racisé.e, et celui d'être précaire (référence [1])
+ou celui d’être travailleur.euse du sexe (référence [2]) ; mais aussi sur la répartition des revenus en
+France (référence [3]); ou encore sur le lien entre l'usage à risque de drogues (par seringues ou
+pailles notamment) et la précarité d'une personne (référence [4]). Dans certains cas, n’ayant pas eu
+directement accès à une probabilité ou une proportion concernant le phénomène exact qui
+m’intéressait, j’ai été amenée à utiliser la formule des probabilités conditionnelles (pour ce qui est
+de la proportion de personnes précaires transgenres ou racisées par exemple), ou bien tout
+simplement à prendre le nombre de personnes concernées par le phénomène, puis à le diviser par la
+population totale. La référence [5] m’a en particulier été très utile car elle avait cet avantage de
+donner certaines valeurs précises en même temps que des témoignages que j’ai tenté de prendre en
+compte à travers certains choix de programmation.
+
+Le deuxième type de sources m’a aidée au niveau de la programmation elle-même. La référence [6]
+m’a ainsi permis de mieux comprendre les possibilités qu’offrait un système multi-agents, mais m’a
+surtout amenée à me poser des questions fondamentales sur les phénomènes que je prendrais ou non
+en compte, afin de garder une complexité acceptable ; et à réfléchir aux limites de ce que je
+montrerai grâce à cette modélisation. J’ai, suite à la lecture de ce document, décidé de laisser de
+côté un certain nombre de facteurs (le fait d’être sans-papiers ou non ; le fait qu’un.e client.e soit
+ou non un homme cisgenre ; le type de relations sexuelles –lequel est associé si le rapport est nonprotégé
+à différentes probabilités de contamination au VIH- ; les agressions en dehors des relations
+tarifées), de telle sorte que les résultats présentés soient sous-évalués (plutôt que surévalués, ce qui
+aurait rendu leur interprétation plus difficile).
+
+Le troisième type de sources, enfin, m’a permis de me faire une idée de ce qui avait déjà été fait sur
+le sujet. À la manière de la référence [7], la plupart des études que j’ai trouvées voyaient surtout les
+prostitué.e.s comme des « réservoirs à sida » (c’est ainsi qu’une campagne des années 1980 les
+désignait, comme le précise la référence [5]), et tentaient d’évaluer leur responsabilité dans la
+propagation du VIH dans le reste de la population. Or les prostitué.e.s, en tant qu’humain.e.s
+comme les autres, ne désirent pas non plus être contaminé.e.s ; et iels comptent de fait parmi les
+personnes qui se font le plus souvent dépister. Selon les mots de Lydia Braggiotti dans la référence
+[5], « Ça a toujours fait partie de notre mentalité de lutter contre les maladies sexuellement
+transmissibles […], on s’est débrouillées, on s’est renseignées, […] on informe nos clients […]. Les
+prostituées ne sont pas débiles ». J’ai donc ici plutôt considéré que ce sont les client.e.s qui
+contaminent les prostitué.e.s, et pas l’inverse. La seule étude que j’aie trouvée qui partageait cette
+vision est la [8] : celle-ci m’a permis d’identifier certains facteurs déterminants que je devrais
+prendre en compte dans la programmation ; mais aussi de comparer mes résultats finaux à une
+référence extérieure afin de vérifier leur cohérence.
+
+
+[1] M. V. Lee Badgett, Soon Kyu Choi, Bianca D.M. Wilson : LGBT POVERTY IN THE UNITED
+STATES A study of differences between sexual orientation and gender identity groups :
+https://williamsinstitute.law.ucla.edu/wp-content/uploads/National-LGBT-Poverty-Oct-2019.pdf
+[2] Evan Urquhart : Decriminalizing Prostitution Is Central to Transgender Rights :
+https://slate.com/human-interest/2018/02/decriminalizing-prostitution-is-central-to-transgenderrights.
+html
+[3] INSEE : Revenus salariaux en 2017 : dispersion des revenus :
+https://www.insee.fr/fr/statistiques/2381326#tableau-figure1_radio2
+[4] OBSERVATOIRE FRANÇAIS DES DROGUES ET DES TOXICOMANIE : Consommation de drogues
+illicites et exclusion sociale: état des connaissances en France :
+https://www.ofdt.fr/BDD/publications/docs/eftxdlia.pdf
+[5] Anne Coppel, Malika Amaouche, Lydia Braggiotti : Le Bus des Femmes prostituées, Histoire
+d'une Mobilisation : Édition Anamosa, publication en 2020
+[6] Cédric Sueur, Jean-Loup Guillaume, Frédéric Amblard : Modélisation des réseaux sociaux :
+https://www.researchgate.net/profile/Cedric-
+Sueur/publication/337311761_Modelisation_des_reseaux_sociaux/links/5dd6a6e092851c1feda559d
+9/Modelisation-des-reseaux-sociaux.pdf
+[7] Parvaiz Ahmad Naik, Mehmet Yavuz, Jian Zu : The role of prostitution on HIV transmission
+with memory: A modeling approach :
+https://www.sciencedirect.com/science/article/pii/S1110016820301666
+[8] K. Shannon, S. A Strathdee, S. M Goldenberg, P. Duff , P. Mwangi, M. Rusakova, S. Reza-Paul, J.
+Lau, K. Deering, M. R Pickles, M-C. Boily : Global epidemiology of HIV among female sex workers:
+influence of structural determinants : https://www.thelancet.com/action/showPdf?pii=S0140-
+6736%2814%2960931-4
+
