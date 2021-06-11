@@ -1,6 +1,6 @@
-**Introduction du sujet** 
+**Introduction du sujet**
 
-Depuis toujours, comme l’expliquait déjà fièrement Grisélidis Réal, « La prostituée est une paria, une femme niée, maudite. Publiquement, elle n’existe pas. ». De fait« Les prostituées forment l’unique prolétariat dont la condition émeut autant la bourgeoisie. […] Dormir dehors à quarante ans n’est interdit par aucune législation. La clochardisation est une dégradation tolérable. » annonce Virginie Despentes dans King Kong Theory. « Être pute, c’est être féministe » rajoutent Maîtresse Nikita et Thierry Schaffauser.
+Depuis toujours, comme l’expliquait déjà fièrement Grisélidis Réal, « La prostituée est une paria, une femme niée, maudite. Publiquement, elle n’existe pas. ». De fait« Les prostituées forment l’unique prolétariat dont la condition émeut autant la bourgeoisie. […] Dormir dehors à quarante ans n’est interdit par aucune législation. La clochardisation est une dégradation tolérable. » annonce Virginie Despentes dans *King Kong Theory*. « Être pute, c’est être féministe » rajoutent Maîtresse Nikita et Thierry Schaffauser.
 
 Ces discours apparemment surprenants sur la prostitution ne le sont que parce qu’ils ont été tenus par des personnes concernées, ou qui l’ont été, et qu’ils expriment ainsi une réalité bien loin de la vision fantasmée des débats de personnes non-concernées que les médias mainstream retransmettent généralement. Il s’agira donc dans un premier temps de faire quelques remarques sur la prostitution qui permettront de comprendre les enjeux réels liés à cette activité, tout en mettant en avant un certain nombre de points qui se révéleront importants dans la suite de ce TIPE.
 
