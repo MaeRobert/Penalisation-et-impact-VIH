@@ -10,9 +10,9 @@ Comment l'application légale de différents positionnements idéologiques conce
   
 **Quelques ressources**
 
-*Fédération Parapluie Rouge :*
+*Fédération Parapluie Rouge :*  
 http://parapluierouge.org/  
-Réunit la plupart des associations de santé communautaire et de travailleur.euse.s du sexe en France. On notera que de nombreuses ressources sont disponibles dans les parties "Biblio" et "Nos Articles" du site du STRASS (https://strass-syndicat.org/)
+Réunit la plupart des associations de santé communautaire et de travailleur.euse.s du sexe en France. On notera que de nombreuses ressources sont disponibles dans les parties "Biblio" et "Nos Articles" du site du STRASS (https://strass-syndicat.org/).
 
 
 
