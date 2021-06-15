@@ -42,6 +42,7 @@ Par Osmose, travailleureuse du sexe
   Un recueil de ressources https://yunisex.wixsite.com/losmosedescendres/se-renseigner-sur-le-travail-du-sex    
   
   
-*Livres :*  
+*Livres :*    
+
 Virginie Despentes, *King Kong Theory*  
 Lydia Braggiotti et Malika Amaouche, *Le Bus des Femmes prostituées, Histoire d'une Mobilisation*
