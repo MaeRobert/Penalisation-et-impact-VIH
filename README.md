@@ -8,7 +8,7 @@ Comment l'application légale de différents positionnements idéologiques conce
     
     
   
-** Quelques ressources**
+**Quelques ressources**
 
 *Fédération Parapluie Rouge :*
 http://parapluierouge.org/  
