@@ -5,9 +5,10 @@
 Comment l'application légale de différents positionnements idéologiques concernant la prostitution influe-t-elle via des dynamiques sociales, sur la propagation du VIH chez ses exerçant.e.s ?
   
     
+    
+    
   
-  
-**Ressources**
+** Quelques ressources**
 
 *Fédération Parapluie Rouge :*
 http://parapluierouge.org/  
@@ -38,4 +39,9 @@ Sur le site de l'association Polyvalence http://assopolyvalence.org/category/lib
 Par Osmose, travailleureuse du sexe   
   Son blog https://yunisex.wixsite.com/losmosedescendres/blog-1  
   Sa chaîne Youtube https://www.youtube.com/channel/UCxr-4LU4NiBMCtmZ4Es_7PA  
-  Un recueil de ressources https://yunisex.wixsite.com/losmosedescendres/se-renseigner-sur-le-travail-du-sex  
+  Un recueil de ressources https://yunisex.wixsite.com/losmosedescendres/se-renseigner-sur-le-travail-du-sex    
+  
+  
+*Livres*  
+Virginie Despentes, *King Kong Theory*  
+Lydia Braggiotti et Malika Amaouche, *Le Bus des Femmes prostituées, Histoire d'une Mobilisation*
