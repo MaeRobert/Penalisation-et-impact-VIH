@@ -23,6 +23,7 @@ Sur le danger que la pénalisation représente pour la propagation du VIH https:
 Sur la prostitution et le féminisme https://strass-syndicat.org/actualite/feminisme-pute/  
 Sur les raisons pour lesquelles une généralisation l'usage de la PrEP chez les travailleur.euse.s du sexe n'est pas une solution https://www.contretemps.eu/traitement-preventif-contre-le-vih-en-finir-avec-la-depolitisation/  
 Contre la pénalisation des client.e.s et la criminalisation de la prostitution https://strass-syndicat.org/actions/manifeste-contre-la-penalisation-des-prostituees-et-de-leurs-clients/  
+Sur la dangereuse censure des travailleur.euse.s du sexe et leur harcèlement par des abolitionnistes https://www.neonmag.fr/moins-de-visibilite-plus-de-precarite-sur-insta-les-travailleurs-du-sexe-censures-se-rebellent-556651.html
   
   
   
