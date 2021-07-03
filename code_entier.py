@@ -449,13 +449,13 @@ class prostitueE(humainE):
         if ok_sans_protection == False:
             if CRIMINALISATION:
                 for i in range(int(self.trauma_police*4)):
-                    if random.random() > PROBA_NON_PROTECTION_TARIFE_CRIMINALISATION:
+                    if random.random() < PROBA_NON_PROTECTION_TARIFE_CRIMINALISATION:
                         ok_sans_protection = True
                         break
                 # Cette boucle permet de prendre en compte la peur induite par la police.
             else:
                 for i in range(int(self.trauma_police*4)):
-                    if random.random() > PROBA_NON_PROTECTION_TARIFE_NON_CRIMINALISATION:
+                    if random.random() < PROBA_NON_PROTECTION_TARIFE_NON_CRIMINALISATION:
                         ok_sans_protection = True
                         break
 
