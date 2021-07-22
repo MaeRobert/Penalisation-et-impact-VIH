@@ -47,5 +47,5 @@ Par Osmose, travailleureuse du sexe
   
 *Livres :*    
 
-Virginie Despentes, *King Kong Theory*  
+Virginie Despentes, *King Kong Theorie*  
 Lydia Braggiotti et Malika Amaouche, *Le Bus des Femmes prostituées, Histoire d'une Mobilisation*
