@@ -14,7 +14,7 @@ Comment l'application légale de différents positionnements idéologiques conce
  
 http://parapluierouge.org/  
 Cette fédération réunit la plupart des associations de santé communautaire et de travailleur.euse.s du sexe en France. On notera que de nombreuses ressources sont disponibles dans les parties "Biblio" et "Nos Articles" du site du STRASS (https://strass-syndicat.org/).  
-Bande annonce du projet documentaire *Parapluie Rouge*, une introduction avant la sortie du film prévue en juillet 2021 par *4x2 Production* https://www.youtube.com/watch?v=bDST9Yc5X_k 
+Bande annonce du projet documentaire *Parapluie Rouge*, une introduction avant la sortie du film prévue en juillet 2021 par *4x2 Production* https://www.youtube.com/watch?v=bDST9Yc5X_k   
 Documentaire *Parapluie Rouge* : https://www.youtube.com/watch?v=OI6LxcyBZZ8
 
 
